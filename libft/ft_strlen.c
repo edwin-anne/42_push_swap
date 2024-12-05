@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/03 14:52:21 by eanne            ###   ########.fr       */
+/*   Created: 2024/10/14 12:22:20 by eanne             #+#    #+#             */
+/*   Updated: 2024/10/17 17:22:56 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+size_t	ft_strlen(const char *s)
 {
-    if (verif_doublon(argc, argv))
-    {
-        printf("ok");
-    }
-    else
-    {
-        printf("error");
-    }
+	int	nbr_string;
+
+	nbr_string = 0;
+	while (s[nbr_string])
+	{
+		nbr_string++;
+	}
+	return (nbr_string);
 }

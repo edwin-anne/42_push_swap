@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/03 14:52:21 by eanne            ###   ########.fr       */
+/*   Created: 2024/10/14 12:21:59 by eanne             #+#    #+#             */
+/*   Updated: 2024/10/21 15:23:33 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-    if (verif_doublon(argc, argv))
-    {
-        printf("ok");
-    }
-    else
-    {
-        printf("error");
-    }
+	const char	*s;
+	char		*d;
+	size_t		i;
+
+	s = (const char *)src;
+	d = (char *)dst;
+	i = 0;
+	if (!d && !s)
+		return (NULL);
+	if (d < s)
+	{
+		while (len--)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	}
+	else
+		while (len--)
+			d[len] = s[len];
+	return (dst);
 }

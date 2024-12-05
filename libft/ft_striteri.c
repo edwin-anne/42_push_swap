@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/03 14:52:21 by eanne            ###   ########.fr       */
+/*   Created: 2024/10/22 11:36:54 by eanne             #+#    #+#             */
+/*   Updated: 2024/10/22 11:42:28 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-    if (verif_doublon(argc, argv))
-    {
-        printf("ok");
-    }
-    else
-    {
-        printf("error");
-    }
+	unsigned int	i;
+
+	if (s && f)
+	{
+		i = 0;
+		while (s[i])
+		{
+			f(i, &s[i]);
+			i++;
+		}
+	}
 }

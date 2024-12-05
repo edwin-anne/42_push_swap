@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/03 14:52:21 by eanne            ###   ########.fr       */
+/*   Created: 2024/10/22 16:36:40 by eanne             #+#    #+#             */
+/*   Updated: 2024/10/22 17:37:38 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+t_list	*ft_lstnew(void *content)
 {
-    if (verif_doublon(argc, argv))
-    {
-        printf("ok");
-    }
-    else
-    {
-        printf("error");
-    }
+	t_list	*new_elem;
+
+	new_elem = (t_list *)malloc(sizeof(t_list));
+	if (new_elem == NULL)
+		return (NULL);
+	new_elem->content = content;
+	new_elem->next = NULL;
+	return (new_elem);
 }

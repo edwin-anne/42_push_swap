@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/03 14:52:21 by eanne            ###   ########.fr       */
+/*   Created: 2024/10/21 11:09:20 by eanne             #+#    #+#             */
+/*   Updated: 2024/10/21 15:28:50 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-    if (verif_doublon(argc, argv))
-    {
-        printf("ok");
-    }
-    else
-    {
-        printf("error");
-    }
+	size_t	i;
+
+	i = ft_strlen(s);
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
+	while (i > 0)
+	{
+		i--;
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+	}
+	if (s[0] == (char)c)
+		return ((char *)s);
+	return (NULL);
 }

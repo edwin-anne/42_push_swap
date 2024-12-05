@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 12:19:27 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/03 14:52:50 by eanne            ###   ########.fr       */
+/*   Created: 2024/10/14 12:22:26 by eanne             #+#    #+#             */
+/*   Updated: 2024/10/22 15:02:31 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-#include <stddef.h>
-#include <stdlib.h>
-
-typedef struct s_stack
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int				value;
-	int				index;
-	struct s_stack	*next;
-}				t_stack;
+	size_t	i;
+	size_t	j;
 
-int verif_doublon(int len, char **arg);
-
-#endif
+	if (*needle == '\0')
+		return ((char *)haystack);
+	i = 0;
+	while (haystack[i] != '\0' && i < len)
+	{
+		j = 0;
+		while (haystack[i + j] == needle[j]
+			&& needle[j] != '\0'
+			&& (i + j) < len)
+		{
+			j++;
+		}
+		if (needle[j] == '\0')
+			return ((char *)&haystack[i]);
+		i++;
+	}
+	return (NULL);
+}

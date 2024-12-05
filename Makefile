@@ -6,52 +6,54 @@
 #    By: eanne <eanne@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 13:09:18 by cauvray           #+#    #+#              #
-#    Updated: 2024/11/04 12:22:46 by eanne            ###   ########.fr        #
+#    Updated: 2024/12/03 15:00:58 by eanne            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libftprintf.a
+NAME	= push_swap
 CC		= gcc
-CFLAGS	+= -Wall -Wextra -Werror
-AR		= ar rcs
+CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 
 SRC_DIR	= srcs
 OBJ_DIR	= objs
 INC_DIR	= includes
 
-_SRCS = ft_printf.c ft_printf_error.c ft_printf_int.c ft_printf_hexa.c
+_SRCS = main.c verif.c
 SRCS = $(addprefix $(SRC_DIR)/, $(_SRCS))
 
 _OBJS = $(_SRCS:.c=.o)
 OBJS = $(addprefix $(OBJ_DIR)/,$(_OBJS))
 
-all:	$(NAME)
+# Path to libft library
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-$(NAME): $(OBJS)
-	$(MAKE) bonus -C libft
-	cp libft/libft.a .
-	mv libft.a $@
-	$(AR) $@ $^
+all: $(NAME)
+
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^ -L$(LIBFT_DIR) -lft
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c -Iincludes $< -o $@
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
 	$(RM) -r $(OBJ_DIR)
-	make clean -C libft
+	$(MAKE) clean -C $(LIBFT_DIR)
 
 fclean:	clean
 	$(RM) $(NAME)
-	$(MAKE) fclean -C libft
+	$(MAKE) fclean -C $(LIBFT_DIR)
 
 re:	fclean all
 
 bonus: re
 
 test: all
-	$(CC) $(CFLAGS) .tests/main.c -L. -lftprintf -o main
-	clear && ./main
+	./$(NAME)
 
-.PHONY:	all clean fclean re
+.PHONY:	all clean fclean re bonus test

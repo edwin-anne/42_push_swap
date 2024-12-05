@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/03 14:52:21 by eanne            ###   ########.fr       */
+/*   Created: 2024/10/22 12:30:31 by eanne             #+#    #+#             */
+/*   Updated: 2024/10/22 12:35:42 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_putnbr_fd(int n, int fd)
 {
-    if (verif_doublon(argc, argv))
-    {
-        printf("ok");
-    }
-    else
-    {
-        printf("error");
-    }
+	if (n < 0)
+	{
+		if (n == -2147483648)
+		{
+			ft_putchar_fd('-', fd);
+			ft_putchar_fd('2', fd);
+			ft_putnbr_fd(147483648, fd);
+			return ;
+		}
+		if (n != -2147483648)
+		{
+			ft_putchar_fd('-', fd);
+			n *= -1;
+		}
+	}
+	if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		n %= 10;
+	}
+	ft_putchar_fd(n + 48, fd);
 }
