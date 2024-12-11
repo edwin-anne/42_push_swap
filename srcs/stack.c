@@ -6,14 +6,14 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:09:30 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/11 21:14:44 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/11 21:25:28 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 # include "libft.h"
 #include <stdio.h>
-// Fonction pour créer un nouvel élément
+// Cree la stack
 t_list *create_element(void *content)
 {
     t_list *new_element = (t_list *)malloc(sizeof(t_list));
@@ -24,7 +24,7 @@ t_list *create_element(void *content)
     return new_element;
 }
 
-// Fonction pour ajouter un élément au sommet de la pile (Push)
+// Rajoute un element dans la stack
 void push(t_list **stack, void *content)
 {
     t_list *new_element = create_element(content);
@@ -33,6 +33,7 @@ void push(t_list **stack, void *content)
     new_element->next = *stack;
     *stack = new_element;
 }
+// Initialise la stack en ajoutant les arguments de argv dans la stack
 void initialize_stack(t_list **stack, char **argv, int start)
 {
     int i = start;
