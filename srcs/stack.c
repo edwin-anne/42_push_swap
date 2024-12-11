@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eanne <eanne@student.42lehavre.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/05 18:49:36 by eanne            ###   ########.fr       */
+/*   Created: 2024/12/05 19:09:30 by eanne             #+#    #+#             */
+/*   Updated: 2024/12/05 19:09:53 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
-#include <stdio.h>
 
-int	main(int argc, char **argv)
+t_stack *init_stack(int value, int index)
 {
-	if (argc > 2)
-	{
-		if (verif_doublon_int(argc, argv))
-		{
-			printf("ok");
-		}
-		else
-			write(2, "Error\n", 6);
-	}
-	else
-	{
-		if (verif_doublon_char(argv[1]))
-		{
-			printf("ok");
-		}
-		else
-			write(2, "Error\n", 6);
-	}
+	t_stack *new_node;
+
+	new_node = (t_stack *)malloc(sizeof(t_stack));
+	if (!new_node)
+		return (NULL);
+
+	new_node->value = value;
+	new_node->index = index;
+	new_node->next = NULL;
+
+	return (new_node);
 }

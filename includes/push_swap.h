@@ -6,7 +6,7 @@
 /*   By: eanne <eanne@student.42lehavre.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:19:27 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/05 18:44:27 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/05 19:10:55 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 # include <stddef.h>
 # include <stdlib.h>
 
-typedef struct s_stack
+typedef struct s_list
 {
-	int				value;
-	int				index;
-	struct s_stack	*next;
-}				t_stack;
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 int	verif_doublon_int(int len, char **arg);
 int	verif_doublon_char(char *argv);
