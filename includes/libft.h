@@ -6,7 +6,7 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:05:18 by eanne             #+#    #+#             */
-/*   Updated: 2024/10/22 19:16:52 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/11 20:41:17 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);

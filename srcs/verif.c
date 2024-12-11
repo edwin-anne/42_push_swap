@@ -6,30 +6,29 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:23:35 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/11 13:29:49 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/11 19:14:01 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
-#include <stdlib.h>
 #include <stdio.h>
 
 int	verif_doublon_int(int len, char **arg)
 {
 	int	i;
 	int	j;
-	int	search;
+	long int	search;
 
 	i = 1;
 	len--;
 	while (i <= len)
 	{
 		j = 1;
-		search = ft_atoi(arg[i]);
+		search = ft_atol(arg[i]);
 		while (j <= len)
 		{
-			if (i != j && search == ft_atoi(arg[j]))
+			if ((i != j && search == ft_atol(arg[j])) || search > INT_MAX || search < INT_MIN)
 				return (0);
 			j++;
 		}
@@ -52,10 +51,10 @@ int	verif_doublon_char(char *argv)
 	while (split[i])
 	{
 		j = 0;
-		search = ft_atoi(split[i]);
+		search = ft_atol(split[i]);
 		while (split[j])
 		{
-			if ((i != j && search == ft_atoi(split[j])) || ((search == INT_MAX) || (search == INT_MIN)))
+			if ((i != j && search == ft_atol(split[j])) || ((search > INT_MAX) || (search < INT_MIN)))
 			{
 				free_loop(split);
 				return (0);
@@ -64,8 +63,7 @@ int	verif_doublon_char(char *argv)
 		}
 		i++;
 	}
-	free_loop(split);
-	return (1);
+	return (free_loop(split));
 }
 
 int free_loop(char **var)

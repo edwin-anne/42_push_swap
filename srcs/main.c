@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eanne <eanne@student.42lehavre.fr>         +#+  +:+       +#+        */
+/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/05 18:49:36 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/11 21:16:11 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,32 @@
 #include "libft.h"
 #include <stdio.h>
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	if (argc > 2)
+	t_list *stack_a;
+	if (character_detector(argv))
 	{
-		if (verif_doublon_int(argc, argv))
+		if (argc > 2)
 		{
-			printf("ok");
+			if (verif_doublon_int(argc, argv))
+			{
+				initialize_stack(&stack_a, argv, 1);
+			}
+			else
+				write(2, "Error\n", 6);
 		}
 		else
-			write(2, "Error\n", 6);
+		{
+			if (verif_doublon_char(argv[1]))
+			{
+				printf("ok");
+			}
+			else
+				write(2, "Error\n", 6);
+		}
 	}
 	else
-	{
-		if (verif_doublon_char(argv[1]))
-		{
-			printf("ok");
-		}
-		else
-			write(2, "Error\n", 6);
-	}
+		write(2, "Error\n", 6);
+
+	print_stack(stack_a);
 }
