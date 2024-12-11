@@ -6,12 +6,13 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:46:49 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/11 21:48:48 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/11 22:05:21 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
 long int	ft_atol(const char *str)
 {
 	int			i;

@@ -6,7 +6,7 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:23:35 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/11 19:14:01 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/11 22:08:34 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 int	verif_doublon_int(int len, char **arg)
 {
-	int	i;
-	int	j;
+	int			i;
+	int			j;
 	long int	search;
 
 	i = 1;
@@ -28,7 +28,9 @@ int	verif_doublon_int(int len, char **arg)
 		search = ft_atol(arg[i]);
 		while (j <= len)
 		{
-			if ((i != j && search == ft_atol(arg[j])) || search > INT_MAX || search < INT_MIN)
+			if (i != j && search == ft_atol(arg[j]))
+				return (0);
+			if (search > INT_MAX || search < INT_MIN)
 				return (0);
 			j++;
 		}
@@ -54,11 +56,10 @@ int	verif_doublon_char(char *argv)
 		search = ft_atol(split[i]);
 		while (split[j])
 		{
-			if ((i != j && search == ft_atol(split[j])) || ((search > INT_MAX) || (search < INT_MIN)))
-			{
-				free_loop(split);
-				return (0);
-			}
+			if (i != j && search == ft_atol(split[j]))
+				return (free_loop(split));
+			if (search > INT_MAX || search < INT_MIN)
+				return (free_loop(split));
 			j++;
 		}
 		i++;
@@ -66,17 +67,16 @@ int	verif_doublon_char(char *argv)
 	return (free_loop(split));
 }
 
-int free_loop(char **var)
+int	free_loop(char **var)
 {
-    int i = 0;
+	int	i;
 
-    if (!var)
-        return (0);
-
-    while (var[i]) {
-        free(var[i]);
-        i++;
-    }
-    free(var);
-	return (1);
+	i = 0;
+	while (var[i])
+	{
+		free(var[i]);
+		i++;
+	}
+	free(var);
+	return (0);
 }
