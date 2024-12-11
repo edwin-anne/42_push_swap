@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eanne <eanne@student.42lehavre.fr>         +#+  +:+       +#+        */
+/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:23:35 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/05 18:46:11 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/11 13:29:49 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,30 @@ int	verif_doublon_char(char *argv)
 		search = ft_atoi(split[i]);
 		while (split[j])
 		{
-			if (i != j && search == ft_atoi(split[j]))
+			if ((i != j && search == ft_atoi(split[j])) || ((search == INT_MAX) || (search == INT_MIN)))
 			{
-				while (split[i])
-					free(split[i++]);
-				free(split);
+				free_loop(split);
 				return (0);
 			}
 			j++;
 		}
 		i++;
 	}
-	i = 0;
-	while (split[i])
-		free(split[i++]);
-	free(split);
+	free_loop(split);
+	return (1);
+}
+
+int free_loop(char **var)
+{
+    int i = 0;
+
+    if (!var)
+        return (0);
+
+    while (var[i]) {
+        free(var[i]);
+        i++;
+    }
+    free(var);
 	return (1);
 }
