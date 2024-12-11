@@ -6,7 +6,7 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/11 21:24:59 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/11 21:55:34 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ int main(int argc, char **argv)
 		if (argc > 2)
 		{
 			if (verif_doublon_int(argc, argv))
-			{
 				initialize_stack(&stack_a, argv, 1);
-			}
 			else
 				write(2, "Error\n", 6);
 		}
@@ -32,7 +30,7 @@ int main(int argc, char **argv)
 		{
 			if (verif_doublon_char(argv[1]))
 			{
-				printf("ok");
+				initialize_stack_char(&stack_a, argv[1]);
 			}
 			else
 				write(2, "Error\n", 6);
@@ -40,6 +38,5 @@ int main(int argc, char **argv)
 	}
 	else
 		write(2, "Error\n", 6);
-
 	print_stack(stack_a);
 }

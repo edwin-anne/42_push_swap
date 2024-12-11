@@ -6,7 +6,7 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:09:30 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/11 21:25:28 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/11 21:57:17 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,30 @@ void initialize_stack(t_list **stack, char **argv, int start)
             push(stack, content);
         i++;
     }
+}
+
+void initialize_stack_char(t_list **stack, char *argv)
+{
+	char	**split;
+    int     start;
+	int		i;
+
+	split = ft_split(argv, ' ');
+	if (!split)
+		return;
+	i = 0;
+    start = 0;
+	while (split[i])
+	{
+        long int *content = malloc(sizeof(long int));
+		*content = ft_atol(split[i]);
+        if (start == 0)
+            *stack = create_element(content);
+        else
+            push(stack, content);
+        start = 1;
+        i++;
+	}
 }
 
 // Fonction pour retirer l’élément au sommet de la pile (Pop)

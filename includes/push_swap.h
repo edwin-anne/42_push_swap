@@ -6,7 +6,7 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:19:27 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/11 21:05:32 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/11 21:51:33 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	character_detector(char **argv);
 void push(t_list **stack, void *content);
 t_list *create_element(void *content);
 void initialize_stack(t_list **stack, char **argv, int start);
+void initialize_stack_char(t_list **stack, char *argv);
 void *pop(t_list **stack);
 void *peek(t_list *stack);
 int is_empty(t_list *stack);
