@@ -6,7 +6,7 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:23:35 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/11 22:08:34 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/12 12:51:25 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int	verif_doublon_char(char *argv)
 		}
 		i++;
 	}
-	return (free_loop(split));
+	free_loop(split);
+	return (1);
 }
 
 int	free_loop(char **var)

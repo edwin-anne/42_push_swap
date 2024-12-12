@@ -6,7 +6,7 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:09:30 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/11 22:13:54 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/12 12:42:11 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	push(t_list **stack, void *content)
 }
 
 // Initialise la stack en ajoutant les arguments de argv dans la stack
-void	initialize_stack(t_list **stack, char **argv, int start)
+int	initialize_stack(t_list **stack, char **argv, int start)
 {
 	int			i;
 	long int	*content;
@@ -49,10 +49,7 @@ void	initialize_stack(t_list **stack, char **argv, int start)
 	{
 		content = malloc(sizeof(long int));
 		if (!content)
-		{
-			write(2, "Error\n", 6);
-			exit(1);
-		}
+			return (0);
 		*content = ft_atol(argv[i]);
 		if (i == start)
 			*stack = create_element(content);
@@ -60,11 +57,12 @@ void	initialize_stack(t_list **stack, char **argv, int start)
 			push(stack, content);
 		i++;
 	}
+	return (1);
 }
 
 //Fonction qui ajoute les valeurs dans la stack quand
 //cest une char qui est donne comme arg
-void	initialize_stack_char(t_list **stack, char *argv)
+int	initialize_stack_char(t_list **stack, char *argv)
 {
 	char		**split;
 	int			start;
@@ -73,7 +71,7 @@ void	initialize_stack_char(t_list **stack, char *argv)
 
 	split = ft_split(argv, ' ');
 	if (!split)
-		return ;
+		return (0);
 	i = 0;
 	start = 0;
 	while (split[i])
@@ -87,6 +85,7 @@ void	initialize_stack_char(t_list **stack, char *argv)
 		start = 1;
 		i++;
 	}
+	return (1);
 }
 
 // Fonction pour retirer l’élément au sommet de la pile (Pop)
