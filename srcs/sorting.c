@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eanne <eanne@student.42lehavre.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:37:32 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/13 11:41:43 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/13 16:38:42 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
+/**
+ * Function to check if the stack is sorted
+ */
 int is_sorted(t_list *stack)
 {
     if (!stack || !stack->next)
@@ -28,62 +31,86 @@ int is_sorted(t_list *stack)
 }
 
 /**
- * Function to find the position of the smallest element in a stack
+ * Function to find the position of the largest element in a stack
  */
-static int find_min_position(t_list *stack)
+static int find_max_position(t_list *stack)
 {
-    int min;
+    int max;
     int position;
-    int min_position;
+    int max_position;
     t_list *current;
 
     current = stack;
-    min = *(int *)current->content;
+    max = *(int *)current->content;
     position = 0;
-    min_position = 0;
+    max_position = 0;
 
     while (current)
     {
-        if (*(int *)current->content < min)
+        if (*(int *)current->content > max)
         {
-            min = *(int *)current->content;
-            min_position = position;
+            max = *(int *)current->content;
+            max_position = position;
         }
         current = current->next;
         position++;
     }
-    return (min_position);
+    return (max_position);
 }
 
 /**
- * Function to sort stack A using stack B as helper
+ * Helper function to push elements of a chunk to stack B
  */
-void sort_stack(t_list **stack_a, t_list **stack_b)
+static void push_chunk_to_b(t_list **stack_a, t_list **stack_b, int min, int max)
 {
-    int min_pos;
-    int size;
+    int size = ft_lstsize(*stack_a);
 
-    size = ft_lstsize(*stack_a);
-    while (size > 0)
+    for (int i = 0; i < size; i++)
     {
-        min_pos = find_min_position(*stack_a);
-        if (min_pos <= size / 2)
+        int value = *(int *)(*stack_a)->content;
+        if (value >= min && value <= max)
         {
-            while (min_pos-- > 0)
-                ra(stack_a);
+            pb(stack_a, stack_b);
         }
         else
         {
-            min_pos = size - min_pos;
-            while (min_pos-- > 0)
-                rra(stack_a);
+            ra(stack_a);
         }
-        pb(stack_a, stack_b);
-        size--;
+    }
+}
+
+/**
+ * Optimized function to sort stack A using chunks
+ */
+void sort_stack(t_list **stack_a, t_list **stack_b)
+{
+    int size = ft_lstsize(*stack_a);
+    int chunk_count = 5;
+    int chunk_size = (size + chunk_count - 1) / chunk_count; // Dynamically distribute chunks
+
+    for (int i = 0; i < chunk_count; i++)
+    {
+        int min = i * chunk_size;
+        int max = (i + 1) * chunk_size - 1;
+        if (max >= size)
+            max = size - 1;
+        push_chunk_to_b(stack_a, stack_b, min, max);
     }
 
     while (*stack_b)
     {
+        int max_pos = find_max_position(*stack_b);
+        if (max_pos <= ft_lstsize(*stack_b) / 2)
+        {
+            while (max_pos-- > 0)
+                rb(stack_b);
+        }
+        else
+        {
+            max_pos = ft_lstsize(*stack_b) - max_pos;
+            while (max_pos-- > 0)
+                rrb(stack_b);
+        }
         pa(stack_a, stack_b);
     }
 }
@@ -95,7 +122,7 @@ void push_swap(t_list **stack_a)
 {
     t_list *stack_b;
 
-    stack_b = create_stack_null();
+    stack_b = NULL;
     if (!is_sorted(*stack_a))
         sort_stack(stack_a, &stack_b);
 }
