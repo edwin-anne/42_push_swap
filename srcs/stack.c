@@ -6,7 +6,7 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:09:30 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/12 12:42:11 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/13 12:59:34 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,67 +26,81 @@ t_list	*create_element(void *content)
 	return (new_element);
 }
 
-// Rajoute un element dans la stack
-void	push(t_list **stack, void *content)
+// Cree la stack NULL
+t_list	*create_stack_null()
 {
-	t_list	*new_element;
-
-	new_element = create_element(content);
-	if (!new_element)
-		return ;
-	new_element->next = *stack;
-	*stack = new_element;
+	return (NULL);
 }
 
-// Initialise la stack en ajoutant les arguments de argv dans la stack
-int	initialize_stack(t_list **stack, char **argv, int start)
+// Rajoute un element dans la stack
+// Ajoute un élément à la fin de la pile
+void append(t_list **stack, void *content)
 {
-	int			i;
-	long int	*content;
+    t_list *new_element = create_element(content);
+    t_list *current = *stack;
 
-	i = start;
-	while (argv[i])
-	{
-		content = malloc(sizeof(long int));
-		if (!content)
-			return (0);
-		*content = ft_atol(argv[i]);
-		if (i == start)
-			*stack = create_element(content);
-		else
-			push(stack, content);
-		i++;
-	}
-	return (1);
+    if (!new_element) {
+        return;
+    }
+
+    if (!(*stack)) {
+        *stack = new_element;
+        return;
+    }
+
+    while (current->next) {
+        current = current->next;
+    }
+    current->next = new_element;
+}
+
+
+// Initialise la stack en ajoutant les arguments de argv dans la stack
+int initialize_stack(t_list **stack, char **argv, int start) {
+    int i;
+    long int *content;
+
+    i = start;
+    while (argv[i]) {
+        content = malloc(sizeof(long int));
+        if (!content)
+            return (0);
+        *content = ft_atol(argv[i]);
+        if (i == start)
+            *stack = create_element(content);
+        else
+            append(stack, content);
+        i++;
+    }
+    return (1);
 }
 
 //Fonction qui ajoute les valeurs dans la stack quand
 //cest une char qui est donne comme arg
-int	initialize_stack_char(t_list **stack, char *argv)
-{
-	char		**split;
-	int			start;
-	int			i;
-	long int	*content;
+int initialize_stack_char(t_list **stack, char *argv) {
+    char **split;
+    int i;
+    long int *content;
 
-	split = ft_split(argv, ' ');
-	if (!split)
-		return (0);
-	i = 0;
-	start = 0;
-	while (split[i])
-	{
-		content = malloc(sizeof(long int));
-		*content = ft_atol(split[i]);
-		if (start == 0)
-			*stack = create_element(content);
-		else
-			push(stack, content);
-		start = 1;
-		i++;
-	}
-	return (1);
+    split = ft_split(argv, ' ');
+    if (!split)
+        return (0);
+    i = 0;
+    while (split[i]) {
+        content = malloc(sizeof(long int));
+        if (!content)
+            return (free_loop(split));
+        *content = ft_atol(split[i]);
+        if (i == 0)
+            *stack = create_element(content);
+        else
+            append(stack, content);
+        i++;
+    }
+    free_loop(split);
+    return (1);
 }
+
 
 // Fonction pour retirer l’élément au sommet de la pile (Pop)
 void	*pop(t_list **stack)
@@ -115,12 +129,11 @@ int is_empty(t_list *stack)
 }
 
 // Fonction d’affichage pour les données (Exemple pour des entiers)
-void print_stack(t_list *stack)
-{
-	while (stack)
-	{
-		printf("%ld -> ", *(long int *)(stack->content));
-		stack = stack->next;
-	}
-	printf("NULL\n");
+void print_stack(t_list *stack) {
+    while (stack) {
+        printf("%d -> ", *(int *)stack->content); // Assurez-vous que `content` contient bien un entier.
+        stack = stack->next;
+    }
+    printf("NULL");
 }
+

@@ -6,13 +6,13 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 12:55:43 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/12 13:35:50 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/13 11:14:59 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
-
+#include <stdio.h>
 // Swap the first two elements of a stack
 void swap(t_list **stack) {
     if (!stack || !(*stack) || !((*stack)->next)) {

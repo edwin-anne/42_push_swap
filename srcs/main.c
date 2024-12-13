@@ -6,7 +6,7 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/12 13:42:33 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/13 13:00:23 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,31 +39,27 @@ int verif_and_insert(int argc, char **argv, t_list **stack_a)
 
 int main(int argc, char **argv)
 {
-	t_list *stack_a;
-	t_list *stack_b;
-	int *test = malloc(sizeof(int));
-	if (test == NULL)
-	{
-		perror("Allocation failed");
-		exit(EXIT_FAILURE);
-	}
-	*test = 1;
+    t_list *stack_a;
 
-	stack_b = create_element(test);
-	if (verif_and_insert(argc, argv, &stack_a))
-	{
-		printf("STACK A || ");
-		print_stack(stack_a);
-		printf("\nSTACK B || ");
-		print_stack(stack_b);
-		printf("\n** OPERATIONS **\n\n");
-		pa(&stack_b, &stack_a);
-		
-		printf("STACK A || ");
-		print_stack(stack_a);
-		printf("\nSTACK B || ");
-		print_stack(stack_b);
-	}
-	else
-		write(2, "Error\n", 6);
+    if (verif_and_insert(argc, argv, &stack_a))
+    {
+		//debug_stack(stack_a);
+        push_swap(&stack_a);
+		//debug_stack(stack_a);
+    }
+    else
+    {
+        write(2, "Error\n", 6);
+    }
+
+    return 0;
+}
+
+void debug_stack(t_list *stack_a)
+{
+    printf("STACK A || ");
+    if (stack_a)
+        print_stack(stack_a);
+    else
+        printf("(empty)");
 }
