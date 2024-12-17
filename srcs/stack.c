@@ -6,7 +6,7 @@
 /*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:09:30 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/16 14:03:17 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/17 10:51:42 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,21 @@
 #include <stdio.h>
 
 // Cree la stack
-t_list	*create_element(void *content)
+t_list *create_element(void *content)
 {
-	t_list	*new_element;
+    t_list *new_element;
 
-	new_element = (t_list *)malloc(sizeof(t_list));
-	if (!new_element)
-		return (NULL);
-	new_element->content = content;
-	new_element->next = NULL;
-	new_element->previous = NULL;
-	return (new_element);
+    new_element = (t_list *)malloc(sizeof(t_list));
+    if (!new_element)
+        return (NULL);
+    new_element->content = content;
+    new_element->next = NULL;
+    new_element->previous = NULL;
+    new_element->index = 0;       // Initialisation de l'index
+    new_element->position = -1;   // Position initiale inconnue
+    new_element->marked = 0;      // Non marqué
+    new_element->distance = 0;    // Distance à 0
+    return (new_element);
 }
 
 // Cree la stack NULL
@@ -53,6 +57,7 @@ void append(t_list **stack, void *content)
 
     current->next = new_element;
     new_element->previous = current;
+    new_element->index = current->index + 1; // Mise à jour de l'index
 }
 
 // Initialise la stack en ajoutant les arguments de argv dans la stack
