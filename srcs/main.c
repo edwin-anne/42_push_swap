@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 10:13:08 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2024/12/28 10:15:12 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,7 @@ int main(int argc, char **argv)
 
     if (verif_and_insert(argc, argv, &stack_a))
     {
-		//debug_stack(stack_a);
         push_swap(&stack_a);
-		//debug_stack(stack_a);
     }
     else
         write(2, "Error\n", 6);
