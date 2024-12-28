@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:23:35 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/12 12:51:25 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/28 10:02:56 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,3 @@ int	verif_doublon_char(char *argv)
 	return (1);
 }
 
-int	free_loop(char **var)
-{
-	int	i;
-
-	i = 0;
-	while (var[i])
-	{
-		free(var[i]);
-		i++;
-	}
-	free(var);
-	return (0);
-}

@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:37:32 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 09:24:25 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2024/12/28 10:04:19 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,5 +181,6 @@ void push_swap(t_list **stack_a)
         else
             mini_sorting(stack_a, &stack_b);
     }
-    //print_stack(*stack_a);
+    free_list(*stack_a);
+    free_list(stack_b);
 }

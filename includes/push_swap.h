@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:19:27 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 09:40:32 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2024/12/28 10:02:48 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	verif_and_insert(int argc, char **argv, t_list **stack_a);
 
 int	verif_doublon_int(int len, char **arg);
 int	verif_doublon_char(char *argv);
-int free_loop(char **var);
 long int	ft_atol(const char *str);
 int	character_detector(char **argv);
 int		ft_lstsize(t_list *lst);
@@ -106,6 +105,11 @@ void	mini_sorting(t_list **stack_a, t_list **stack_b);
 void    mini_sorting_3(t_list **stack_a);
 void mini_sorting_5(t_list **stack_a, t_list **stack_b);
 
+//**************************//
+//***** FREE ************//
+//*************************//
+void free_list(t_list *list);
+int free_loop(char **var);
 void debug_stack(t_list *stack_a);
 
 #endif

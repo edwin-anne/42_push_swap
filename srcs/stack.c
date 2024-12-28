@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:09:30 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/17 10:51:42 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/28 10:09:02 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,29 +135,3 @@ int is_empty(t_list *stack)
 {
     return stack == NULL;
 }
-
-// Fonction d’affichage pour les données (Exemple pour des entiers)
-void print_stack(t_list *stack)
-{
-    if (!stack)
-    {
-        printf("Stack is empty.\n");
-        return;
-    }
-
-    printf("Stack contents:\n");
-    while (stack)
-    {
-        if (stack->content)
-        {
-            printf("%d -> ", *(int *)stack->content);
-        }
-        else
-        {
-            printf("NULL (content) -> ");
-        }
-        stack = stack->next;
-    }
-    printf("NULL\n");
-}
-

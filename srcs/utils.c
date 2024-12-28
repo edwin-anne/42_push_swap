@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:46:49 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/17 10:23:39 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/28 10:03:22 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,30 @@ int	ft_lstsize(t_list *lst)
 		i++;
 	}
 	return (i);
+}
+int	free_loop(char **var)
+{
+	int	i;
+
+	i = 0;
+	while (var[i])
+	{
+		free(var[i]);
+		i++;
+	}
+	free(var);
+	return (0);
+}
+
+void free_list(t_list *list)
+{
+    t_list *temp;
+
+    while (list != NULL)
+    {
+        temp = list->next;
+        free(list->content);
+        free(list);
+        list = temp;
+    }
 }
