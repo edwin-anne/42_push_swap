@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eanne <eanne@student.42.fr>                +#+  +:+       +#+         #
+#    By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 13:09:18 by cauvray           #+#    #+#              #
-#    Updated: 2024/12/13 11:40:35 by eanne            ###   ########.fr        #
+#    Updated: 2024/12/28 09:23:16 by Edwin ANNE       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC_DIR	= srcs
 OBJ_DIR	= objs
 INC_DIR	= includes
 
-_SRCS = main.c verif.c utils.c stack.c operations.c instructions.c sorting.c
+_SRCS = main.c verif.c utils.c stack.c operations.c instructions.c sorting.c sorting_chunk.c mini_sorting.c
 SRCS = $(addprefix $(SRC_DIR)/, $(_SRCS))
 
 _OBJS = $(_SRCS:.c=.o)

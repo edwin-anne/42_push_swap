@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:37:32 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 09:24:25 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2024/12/27 23:24:36 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,34 @@ int find_min(t_list *stack)
     return min;
 }
 
+static void push_chunks_to_b(t_list **stack_a, t_list **stack_b, int chunk_size)
+{
+    int chunk_min = find_min(*stack_a);
+    int chunk_max = find_min(*stack_a) + chunk_size;
+    int total_size = ft_lstsize(*stack_a);
+
+    while (chunk_min < total_size)
+    {
+        int i = 0;
+        int current_size = ft_lstsize(*stack_a);
+
+        while (i++ < current_size)
+        {
+            int value = *(int *)(*stack_a)->content;
+            
+            if (value >= chunk_min && value < chunk_max)
+            {
+                pb(stack_a, stack_b);
+                if (*stack_b && (*(int *)(*stack_b)->content < chunk_min + chunk_size / 2))
+                    rb(stack_b);
+            }
+            else
+                ra(stack_a);
+        }
+        chunk_min += chunk_size;
+        chunk_max += chunk_size;
+    }
+}
 static int try_push_next(t_list **stack_b, t_list **stack_a, int swap)
 {
     int second_max_val = find_second_max_value(*stack_b);
@@ -107,6 +135,7 @@ static int try_push_next(t_list **stack_b, t_list **stack_a, int swap)
     }
     return 0;
 }
+
 
 int smart_rotate_b(t_list **stack_b, int size_b, t_list **stack_a)
 {

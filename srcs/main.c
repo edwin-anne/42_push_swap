@@ -48,9 +48,7 @@ int main(int argc, char **argv)
 		//debug_stack(stack_a);
     }
     else
-    {
         write(2, "Error\n", 6);
-    }
 
     return 0;
 }

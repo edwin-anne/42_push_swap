@@ -40,17 +40,27 @@ long int	ft_atol(const char *str)
 
 int character_detector(char **argv)
 {
-	int	i;
-	int	j;
+    int i;
+    int j;
 
-	i = 1;
-	j = 0;
-
+    i = 1;
     while (argv[i] != NULL) {
+        if (argv[i][0] == '\0') {
+            return (0);
+        }
         j = 0;
         while (argv[i][j] != '\0') {
             if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '-' && argv[i][j] != '+' && argv[i][j] != ' ') {
                 return (0);
+            }
+            // Vérification des signes + et -
+            if ((argv[i][j] == '-' || argv[i][j] == '+')) {
+                if (j > 0 && argv[i][j - 1] != ' ') {
+                    return (0); // Le signe doit être précédé d'un espace ou au début
+                }
+                if (argv[i][j + 1] == '\0' || (argv[i][j + 1] < '0' || argv[i][j + 1] > '9')) {
+                    return (0); // Le signe doit être suivi d'un chiffre
+                }
             }
             j++;
         }
@@ -58,4 +68,19 @@ int character_detector(char **argv)
     }
 
     return (1);
+}
+
+int	ft_lstsize(t_list *lst)
+{
+	int		i;
+	t_list	*temp;
+
+	i = 0;
+	temp = lst;
+	while (temp != NULL)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
 }

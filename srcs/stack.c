@@ -139,9 +139,25 @@ int is_empty(t_list *stack)
 // Fonction d’affichage pour les données (Exemple pour des entiers)
 void print_stack(t_list *stack)
 {
-    while (stack) {
-        printf("%d -> ", *(int *)stack->content); // Assurez-vous que `content` contient bien un entier.
+    if (!stack)
+    {
+        printf("Stack is empty.\n");
+        return;
+    }
+
+    printf("Stack contents:\n");
+    while (stack)
+    {
+        if (stack->content)
+        {
+            printf("%d -> ", *(int *)stack->content);
+        }
+        else
+        {
+            printf("NULL (content) -> ");
+        }
         stack = stack->next;
     }
     printf("NULL\n");
 }
+

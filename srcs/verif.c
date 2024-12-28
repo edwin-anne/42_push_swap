@@ -44,7 +44,7 @@ int	verif_doublon_char(char *argv)
 	char	**split;
 	int		i;
 	int		j;
-	int		search;
+	long int		search;
 
 	split = ft_split(argv, ' ');
 	if (!split)

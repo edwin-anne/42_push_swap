@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:19:27 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/17 10:16:20 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/28 09:40:32 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <limits.h>
+
 
 typedef struct s_list
 {
@@ -43,6 +44,7 @@ int	verif_doublon_char(char *argv);
 int free_loop(char **var);
 long int	ft_atol(const char *str);
 int	character_detector(char **argv);
+int		ft_lstsize(t_list *lst);
 
 //******************//
 //***** STACK ******//
@@ -82,11 +84,27 @@ void rrb(t_list **b); //OK
 void rrr(t_list **a, t_list **b); //OK
 
 //**************************//
+//***** SORTING CHUNK ************//
+//*************************//
+void push_chunks_to_b(t_list **stack_a, t_list **stack_b, int chunk_size);
+int find_position_in_stack(t_list *stack, int lower_limit, int upper_limit);
+int count_elements_in_chunk(t_list *stack, int lower_limit, int upper_limit);
+
+
+//**************************//
 //***** SORTING ************//
 //*************************//
 void sort_stack(t_list **stack_a, t_list **stack_b);
 void push_swap(t_list **stack_a);
 int is_sorted(t_list *stack);
+int find_min(t_list *stack);
+
+//**************************//
+//***** MINI SORTING ************//
+//*************************//
+void	mini_sorting(t_list **stack_a, t_list **stack_b);
+void    mini_sorting_3(t_list **stack_a);
+void mini_sorting_5(t_list **stack_a, t_list **stack_b);
 
 void debug_stack(t_list *stack_a);
 
