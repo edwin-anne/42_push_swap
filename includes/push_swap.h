@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:19:27 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 10:12:53 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2024/12/28 10:32:54 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <limits.h>
-
+# include <unistd.h>
 
 typedef struct s_list
 {
