@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/16 16:05:18 by eanne            ###   ########.fr       */
+/*   Updated: 2024/12/28 10:13:08 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,4 @@ int main(int argc, char **argv)
         write(2, "Error\n", 6);
 
     return 0;
-}
-
-void debug_stack(t_list *stack_a)
-{
-    printf("STACK A || ");
-    if (stack_a)
-        print_stack(stack_a);
-    else
-        printf("(empty)");
 }

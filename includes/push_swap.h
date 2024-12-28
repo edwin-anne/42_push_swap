@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:19:27 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 10:02:48 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2024/12/28 10:12:53 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int initialize_stack_char(t_list **stack, char *argv);
 void *pop(t_list **stack);
 void *peek(t_list *stack);
 int is_empty(t_list *stack);
-void print_stack(t_list *stack);
 
 //***********************//
 //***** OPERATIONS ******//
