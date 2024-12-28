@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:09:30 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 10:09:02 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2024/12/28 10:16:04 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-// Cree la stack
+
 t_list *create_element(void *content)
 {
     t_list *new_element;
@@ -25,20 +25,18 @@ t_list *create_element(void *content)
     new_element->content = content;
     new_element->next = NULL;
     new_element->previous = NULL;
-    new_element->index = 0;       // Initialisation de l'index
-    new_element->position = -1;   // Position initiale inconnue
-    new_element->marked = 0;      // Non marqué
-    new_element->distance = 0;    // Distance à 0
+    new_element->index = 0;
+    new_element->position = -1;
+    new_element->marked = 0;
+    new_element->distance = 0;
     return (new_element);
 }
 
-// Cree la stack NULL
 t_list	*create_stack_null()
 {
 	return (NULL);
 }
 
-// Ajoute un élément à la fin de la pile
 void append(t_list **stack, void *content)
 {
     t_list *new_element = create_element(content);
@@ -57,10 +55,9 @@ void append(t_list **stack, void *content)
 
     current->next = new_element;
     new_element->previous = current;
-    new_element->index = current->index + 1; // Mise à jour de l'index
+    new_element->index = current->index + 1;
 }
 
-// Initialise la stack en ajoutant les arguments de argv dans la stack
 int initialize_stack(t_list **stack, char **argv, int start)
 {
     int i;
@@ -81,7 +78,6 @@ int initialize_stack(t_list **stack, char **argv, int start)
     return (1);
 }
 
-// Fonction qui ajoute les valeurs dans la stack quand un char est donné comme arg
 int initialize_stack_char(t_list **stack, char *argv)
 {
     char **split;
@@ -107,7 +103,6 @@ int initialize_stack_char(t_list **stack, char *argv)
     return (1);
 }
 
-// Fonction pour retirer l’élément au sommet de la pile (Pop)
 void	*pop(t_list **stack)
 {
     if (!*stack)
@@ -122,7 +117,6 @@ void	*pop(t_list **stack)
     return content;
 }
 
-// Fonction pour voir le sommet de la pile (Peek)
 void *peek(t_list *stack)
 {
     if (!stack)
@@ -130,7 +124,6 @@ void *peek(t_list *stack)
     return stack->content;
 }
 
-// Fonction pour vérifier si la pile est vide
 int is_empty(t_list *stack)
 {
     return stack == NULL;
