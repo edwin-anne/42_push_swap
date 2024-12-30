@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 20:54:18 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2024/12/30 13:52:50 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "libft.h"
 #include <stdio.h>
 
+//Vérifie si il y a un caractère dans les arguments et initialise les stacks
+//selon les données transmise
 int	verif_and_insert(int argc, char **argv, t_list **stack_a)
 {
 	if (character_detector(argv, 1, 0))

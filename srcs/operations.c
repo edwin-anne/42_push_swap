@@ -6,13 +6,16 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 12:55:43 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 10:53:44 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2024/12/30 14:09:25 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
+/*
+Inverse le 1er et le 2eme elements dans la stack
+*/
 void	swap(t_list **stack)
 {
 	t_list	*first;
@@ -29,6 +32,10 @@ void	swap(t_list **stack)
 	*stack = second;
 }
 
+/*
+Effectue une rotation inversée sur une pile, déplaçant le dernier élément 
+au sommet
+*/
 void	reverse_rotate(t_list **stack)
 {
 	t_list	*prev;
@@ -50,6 +57,9 @@ void	reverse_rotate(t_list **stack)
 	*stack = current;
 }
 
+/*
+Deplace le premier élements de la stack from au sommet de la to
+*/
 void	push_stack(t_list **from, t_list **to)
 {
 	t_list	*node;
@@ -64,6 +74,10 @@ void	push_stack(t_list **from, t_list **to)
 	*to = node;
 }
 
+/*
+Effectue une rotation sur une pile, déplaçant le dernier élément 
+au sommet
+*/
 void	rotate(t_list **stack)
 {
 	t_list	*first;
