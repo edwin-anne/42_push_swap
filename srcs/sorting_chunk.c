@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 09:20:16 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2024/12/28 18:46:29 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2024/12/28 21:03:56 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	push_chunks_to_b(t_list **stack_a, t_list **stack_b, int chunk_size)
 		limits.lower_limit = limits.upper_limit - chunk_size;
 		limits.chunk_size = chunk_size;
 		push_chunks_to_b_helper(stack_a, stack_b, &limits, &count);
-		if (count_elements_in_chunk(*stack_a, limits.lower_limit, limits.upper_limit) == 0)
+		if (count_elements_in_chunk(*stack_a,
+				limits.lower_limit, limits.upper_limit) == 0)
 			chunk_n++;
 	}
 }

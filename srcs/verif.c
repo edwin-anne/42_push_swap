@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:23:35 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 10:02:56 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2024/12/28 20:55:44 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	verif_doublon_int(int len, char **arg)
 
 int	verif_doublon_char(char *argv)
 {
-	char	**split;
-	int		i;
-	int		j;
-	long int		search;
+	char		**split;
+	int			i;
+	int			j;
+	long int	search;
 
 	split = ft_split(argv, ' ');
 	if (!split)
@@ -67,4 +67,3 @@ int	verif_doublon_char(char *argv)
 	free_loop(split);
 	return (1);
 }
-

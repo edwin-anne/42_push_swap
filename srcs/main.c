@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 10:42:30 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2024/12/28 20:54:18 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	verif_and_insert(int argc, char **argv, t_list **stack_a)
 {
-	if (character_detector(argv))
+	if (character_detector(argv, 1, 0))
 	{
 		if (argc > 2)
 		{
