@@ -6,13 +6,41 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:23:35 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 20:55:44 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/09 14:51:35 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 #include <stdio.h>
+
+int	is_valid_number(char *str)
+{
+	int	len;
+	int	i;
+
+	len = 0;
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		len++;
+		i++;
+	}
+	if (len > 10)
+		return (0);
+	if (len == 10)
+	{
+		if (str[0] == '-' && ft_strncmp(&str[1], "2147483648", 10) > 0)
+			return (0);
+		if (str[0] != '-' && ft_strncmp(str, "2147483647", 10) > 0)
+			return (0);
+	}
+	return (1);
+}
 
 int	verif_doublon_int(int len, char **arg)
 {
@@ -24,6 +52,8 @@ int	verif_doublon_int(int len, char **arg)
 	len--;
 	while (i <= len)
 	{
+		if (!is_valid_number(arg[i]))
+			return (0);
 		j = 1;
 		search = ft_atol(arg[i]);
 		while (j <= len)
@@ -52,6 +82,8 @@ int	verif_doublon_char(char *argv)
 	i = 0;
 	while (split[i])
 	{
+		if (!is_valid_number(split[i]))
+			return (free_loop(split));
 		j = 0;
 		search = ft_atol(split[i]);
 		while (split[j])
