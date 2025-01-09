@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:19:27 by eanne             #+#    #+#             */
-/*   Updated: 2025/01/09 15:10:27 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/09 18:23:39 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int			verif_doublon_char(char *argv);
 int			character_detector(char **argv, int i, int j);
 int			ft_lstsize(t_list *lst);
 int			is_valid_number(char *str);
+int			char_empty(char *str);
 
 //******************//
 //***** STACK ******//

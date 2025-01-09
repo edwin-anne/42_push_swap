@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:28:19 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/30 13:52:50 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/09 18:46:48 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	verif_and_insert(int argc, char **argv, t_list **stack_a)
 		}
 		else
 		{
-			if (verif_doublon_char(argv[1]))
+			if (verif_doublon_char(argv[1]) && char_empty(argv[1]))
 				return (initialize_stack_char(stack_a, argv[1]));
 			else
 				return (0);
@@ -43,11 +43,14 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 
-	if (verif_and_insert(argc, argv, &stack_a))
+	if (argc != 1)
 	{
-		push_swap(&stack_a);
+		if (verif_and_insert(argc, argv, &stack_a))
+		{
+			push_swap(&stack_a);
+		}
+		else
+			write(2, "Error\n", 6);
 	}
-	else
-		write(2, "Error\n", 6);
 	return (0);
 }

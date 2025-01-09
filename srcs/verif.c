@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:23:35 by eanne             #+#    #+#             */
-/*   Updated: 2025/01/09 18:14:49 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/09 18:47:02 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,18 @@ int	is_valid_number(char *str)
 			return (0);
 	}
 	return (1);
+}
+
+int	char_empty(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ')
+			return (1);
+		i++;
+	}
+	return (0);
 }
