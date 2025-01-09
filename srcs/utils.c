@@ -6,12 +6,12 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:46:49 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 20:55:14 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/09 15:14:47 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
 long int	ft_atol(const char *str)
 {
