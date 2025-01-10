@@ -6,16 +6,17 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:37:32 by eanne             #+#    #+#             */
-/*   Updated: 2024/12/28 20:37:31 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/10 22:04:34 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-#include <stdio.h>
 #include <limits.h>
 
+//Verifie si la valeur qu'il reste sur stack b est le suivant
+// qui est a deplace dans la stack a
 static int	try_push_next(t_list **stack_b, t_list **stack_a, int swap)
 {
 	int	second_max_val;
@@ -29,6 +30,8 @@ static int	try_push_next(t_list **stack_b, t_list **stack_a, int swap)
 	return (0);
 }
 
+//Deplace dans la stack b lélement qui est le suivant a push dans la stack a
+//Appelle try_push_next pour savoir si on peux push
 int	smart_rotate_b(t_list **stack_b, int size_b, t_list **stack_a)
 {
 	int	swap;
@@ -57,6 +60,8 @@ int	smart_rotate_b(t_list **stack_b, int size_b, t_list **stack_a)
 	return (swap);
 }
 
+//2eme parti du tri avec les chunks qui sont trie
+//il faut les parcourire pour push le prochain element
 static void	push_back_to_a(t_list **stack_a, t_list **stack_b)
 {
 	while (*stack_b)
@@ -76,6 +81,8 @@ static void	push_back_to_a(t_list **stack_a, t_list **stack_b)
 	}
 }
 
+//Fonction principal qui calcule la taille des chunks
+//et appelle les 2 etapes du tri par chunks
 void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
 	int	size;
@@ -89,6 +96,8 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 		ra(stack_a);
 }
 
+//Verifie si la pile n'est pas deja triee
+//Sinon appelle le tri
 void	push_swap(t_list **stack_a)
 {
 	t_list	*stack_b;
