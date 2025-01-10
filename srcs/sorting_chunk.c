@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 09:20:16 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/09 14:42:33 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/10 21:47:27 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,22 @@ void	push_chunks_to_b(t_list **stack_a, t_list **stack_b, int chunk_size)
 	int				chunk_n;
 	int				count;
 	int				total_elements;
+	int				min_val;
 	t_chunk_limits	limits;
 
-	chunk_n = 1;
+	chunk_n = 0;
 	count = 0;
 	total_elements = ft_lstsize(*stack_a);
+	min_val = find_min(*stack_a);
 	while (count < total_elements)
 	{
-		limits.upper_limit = chunk_size * chunk_n;
-		limits.lower_limit = limits.upper_limit - chunk_size;
+		limits.upper_limit = min_val + (chunk_n + 1) * chunk_size;
+		limits.lower_limit = min_val + chunk_n * chunk_size;
 		limits.chunk_size = chunk_size;
 		if (count_elements_in_chunk(*stack_a,
 				limits.lower_limit, limits.upper_limit) == 0)
 		{
 			chunk_n++;
-			continue ;
 		}
 		push_chunks_to_b_helper(stack_a, stack_b, &limits, &count);
 	}
