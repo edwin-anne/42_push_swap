@@ -1,0 +1,1 @@
+This project requires you to sort data 📊 on a stack 🏗️, using a limited set of instructions 📜, in as few moves as possible 🎯. To succeed ✅, you will need to manipulate different sorting algorithms 🔄 and choose the most appropriate solution 🤔💡 for an optimized data ranking 📈.
